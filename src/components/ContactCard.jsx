@@ -1,6 +1,12 @@
 import { Avatar } from "./Avatar";
-
+import { useState } from "react";
 export function ContactCard(){
+    const [name, useName] = useState("");
+    const [email, useEmail] = useState("");
+    const [phone, usePhone] = useState("");
+
+
+    
     return (
         <div className="flex flex-col justify-center items-center bg-customGray-light rounded-3xl m-10">
             <div className="p-4">

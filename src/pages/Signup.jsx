@@ -1,6 +1,20 @@
 import { TopBar } from "../components/TopBar"
-
+import { useState } from "react";
+import axios from 'axios';
 export const Signup = () => {
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+
+ function onClickHandler() { 
+        axios.post('http://localhost:5001/api/users/register', {
+        username,
+        email,
+        password
+    }).then((response) => {
+        console.log("created user")
+    })}
     return(
         <div className='flex flex-col items-center bg-customGray-dark min-h-screen p-10'>
 
@@ -14,17 +28,17 @@ export const Signup = () => {
                 <div className="text-gray-100 text-sm pt-1 pb-5 font-semibold">
                     Create an account to start adding your contacts.
                 </div>
-                <div>
+                <div className="text-gray-100">
 
-                    <input className="rounded-full bg-customGray-dark m-2 p-2" placeholder="email"/>
+                    <input onChange={(e) => (setEmail(e.target.value))} className="rounded-full bg-customGray-dark m-2 p-2" placeholder="email"/>
                 </div>
-                <div>
-                    <input className="rounded-full bg-customGray-dark m-2 p-2" placeholder="username"/>
+                <div  className="text-gray-100">
+                    <input onChange={(e) => (setUsername(e.target.value))} className="rounded-full bg-customGray-dark m-2 p-2" placeholder="username"/>
                 </div>
-                <div>
-                    <input className="rounded-full bg-customGray-dark m-2 p-2" placeholder="password"/>
+                <div  className="text-gray-100">
+                    <input onChange={(e) => (setPassword(e.target.value))} className="rounded-full bg-customGray-dark m-2 p-2" placeholder="password"/>
                 </div>
-                <button className="bg-blue-700 rounded-full m-2 p-2 w-20">
+                <button onClick={onClickHandler} className="bg-blue-700 rounded-full m-2 p-2 w-20">
                     Sign up
                 </button>
 
