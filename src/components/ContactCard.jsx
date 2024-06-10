@@ -1,19 +1,34 @@
 import { Avatar } from "./Avatar";
 import { useState } from "react";
-export function ContactCard(){
-    const [name, useName] = useState("");
-    const [email, useEmail] = useState("");
-    const [phone, usePhone] = useState("");
-
-
+import axios from "axios";
+import { useEffect } from "react";
+export function ContactCard({id}){
+    const [contact, setContact] = useState([]);
+  //  console.log("contact card id " + id)
+    useEffect( () => { 
+        axios.get(`http://localhost:5001/api/contacts/${id}`, {
+        headers:{
+            Authorization: "Bearer " + window.localStorage.getItem("token")
+        }}
+    ).then(response => {
+            setContact(response.data.contact)
+           // console.log("inside card")
+            //console.log(response.data.contact)
+            
+        }
+    )
+    }, [id])
     
+    if (!contact) {
+        return <div>Select a contact to view details</div>;
+    }
     return (
         <div className="flex flex-col justify-center items-center bg-customGray-light rounded-3xl m-10">
             <div className="p-4">
             <Avatar/>
             </div>
             <div className="p-4 text-gray-100">
-            name
+            {contact.name}
             </div>
             <div className="flex">
                 <div className="p-4 text-gray-400">
@@ -23,7 +38,7 @@ export function ContactCard(){
                     </svg>
                 </div>
                 <div className="p-4 text-gray-400">
-                email
+                {contact.email}
                 </div>
                 
             </div>
@@ -34,7 +49,7 @@ export function ContactCard(){
                     </svg>
                 </div>
                 <div className="p-4 text-gray-400">
-                phone
+                {contact.phone}
                 </div>
                 
             </div>
