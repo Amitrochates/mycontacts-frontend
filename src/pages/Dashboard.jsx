@@ -1,8 +1,10 @@
+import { useState } from 'react'
 import { ContactCard } from '../components/ContactCard'
 import { ContactList } from '../components/ContactList'
 import { LeftBar } from '../components/LeftBar'
 import { TopBar } from '../components/TopBar'
 export const Dashboard = () => {
+    const [selectedid, setSelectedid] = useState()
     return (
         <div className='flex flex-col bg-customGray-dark min-h-screen p-10 min-w-screen'>
 
@@ -14,10 +16,10 @@ export const Dashboard = () => {
                     <LeftBar/>
                 </div>
                 <div className='col-span-6'>
-                    <ContactList/>
+                    <ContactList setSelectedid={setSelectedid}/>
                 </div>
                 <div className='bg-customGray rounded-3xl col-span-4'>
-                    <ContactCard/>
+                    <ContactCard id={selectedid}/>
                 </div>
                 
             </div>
