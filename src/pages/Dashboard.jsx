@@ -5,6 +5,12 @@ import { LeftBar } from '../components/LeftBar'
 import { TopBar } from '../components/TopBar'
 export const Dashboard = () => {
     const [selectedid, setSelectedid] = useState()
+    const [contacts, setContacts] = useState([]);
+    const handleDelete = (id) => {
+        setContacts(contacts.filter(contact => contact._id !== id));
+        setSelectedid(null); // Clear the selected contact after deletion
+    };
+
     return (
         <div className='flex flex-col bg-customGray-dark min-h-screen p-10 min-w-screen'>
 
@@ -16,10 +22,12 @@ export const Dashboard = () => {
                     <LeftBar/>
                 </div>
                 <div className='col-span-6'>
-                    <ContactList setSelectedid={setSelectedid}/>
+                    <ContactList contacts={contacts} setContacts={setContacts} setSelectedid={setSelectedid}/>
                 </div>
                 <div className='bg-customGray rounded-3xl col-span-4'>
-                    <ContactCard id={selectedid}/>
+                {selectedid && (
+                <ContactCard id={selectedid} onDelete={handleDelete} />
+            )}
                 </div>
                 
             </div>
