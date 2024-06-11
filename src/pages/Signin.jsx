@@ -10,7 +10,7 @@ export const Signin = () => {
         email,
         password
     }).then((response) => {
-        console.log(response);
+        // console.log(response);
         window.localStorage.setItem("token", response.data.accessToken);
         navigate("/dashboard");
     })}
