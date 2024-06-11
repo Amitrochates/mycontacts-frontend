@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { ContactName } from "./ContactName";
 import axios from "axios";
-export function ContactList ({contacts, setContacts, setSelectedid}){
+export function ContactList ({contacts, setContacts, setSelectedid, setMode}){
 
     
     useEffect(() => {
@@ -16,7 +16,7 @@ export function ContactList ({contacts, setContacts, setSelectedid}){
 
     return (
         <div className="flex flex-col p-4 m-4 h-full bg-customGray text-gray-100 rounded-3xl" >
-           {contacts?.map(contact => <ContactName key={contact._id} name={contact.name} id={contact._id} setSelectedid={setSelectedid}/>)}
+           {contacts?.map(contact => <ContactName key={contact._id} name={contact.name} id={contact._id} setSelectedid={setSelectedid} setMode={setMode}/>)}
            
         </div>
     )

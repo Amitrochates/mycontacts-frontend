@@ -1,9 +1,9 @@
 import { Avatar } from "./Avatar";
 
-export function ContactName ({name, id, setSelectedid}){
+export function ContactName ({name, id, setSelectedid, setMode}){
    // console.log("contact name id " + id)
-    return (
-        <div className="flex justify-start rounded-full hover:bg-blue-600 p-2 m-5" onClick = {() => setSelectedid(id)}>
+    return (<>
+        <div className="flex justify-start rounded-full hover:bg-blue-600 p-2 m-5" onClick = {() => {setSelectedid(id); setMode('view')} }>
             <div>
               <Avatar/>            
             </div>
@@ -14,5 +14,6 @@ export function ContactName ({name, id, setSelectedid}){
 
 
         </div>
+        </>
     )
 }
