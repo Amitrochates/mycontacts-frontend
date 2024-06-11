@@ -2,6 +2,7 @@ import { Avatar } from "./Avatar";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
+import { toast } from 'react-toastify';
 export function ContactCard({id, onDelete, mode, setMode, setSelectedid, onSave}){
     const [contact, setContact] = useState([]);
     
@@ -30,7 +31,7 @@ export function ContactCard({id, onDelete, mode, setMode, setSelectedid, onSave}
         Authorization: "Bearer " + window.localStorage.getItem("token")
     }}
     ).then(response => {
-            console.log(response.data)
+        toast.success('Contact deletd successfully');
             onDelete(id);           
         }
     )}   
@@ -49,7 +50,7 @@ export function ContactCard({id, onDelete, mode, setMode, setSelectedid, onSave}
                     Authorization: "Bearer " + window.localStorage.getItem("token")
                 }
             }).then(response => {onSave(response.data.contact) 
-                
+                toast.success('Contact created');
             })
         } else if (mode === 'edit'){
             axios.put(`http://localhost:5001/api/contacts/${id}`, contact, {
@@ -57,7 +58,7 @@ export function ContactCard({id, onDelete, mode, setMode, setSelectedid, onSave}
                     Authorization: "Bearer " + window.localStorage.getItem("token")
                 }
             }).then(response => {onSave(response.data.updatedContact)
-               
+                toast.success('Contact edited');
             })
         }
 
