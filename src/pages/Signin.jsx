@@ -1,7 +1,6 @@
 import { TopBar } from "../components/TopBar"
 import { useState } from "react"
 import axios from "axios"
-import { Avatar } from "../components/Avatar"
 import { useNavigate } from "react-router-dom"
 export const Signin = () => {
 
