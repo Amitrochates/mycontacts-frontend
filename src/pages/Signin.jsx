@@ -3,10 +3,10 @@ import { useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 export const Signin = () => {
-
+    const url = import.meta.env.VITE_BACKEND_URL;
     const navigate = useNavigate();
 
-    function onClickhandler() { axios.post('http://localhost:5001/api/users/login', {
+    function onClickhandler() { axios.post(`${url}/api/users/login`, {
         email,
         password
     }).then((response) => {

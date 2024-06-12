@@ -3,7 +3,10 @@ import { ContactCard } from '../components/ContactCard'
 import { ContactList } from '../components/ContactList'
 import { LeftBar } from '../components/LeftBar'
 import { TopBar } from '../components/TopBar'
+
 export const Dashboard = () => {
+    
+
     const [selectedid, setSelectedid] = useState()
     const [contacts, setContacts] = useState([]);
     const [mode, setMode] = useState('view');

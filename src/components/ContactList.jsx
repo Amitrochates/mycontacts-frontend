@@ -3,9 +3,9 @@ import { ContactName } from "./ContactName";
 import axios from "axios";
 export function ContactList ({contacts, setContacts, setSelectedid, setMode}){
 
-    
+    const url = import.meta.env.VITE_BACKEND_URL;
     useEffect(() => {
-        axios.get("http://localhost:5001/api/contacts/",{
+        axios.get(`${url}/api/contacts/`,{
             headers: {
                 Authorization: "Bearer " + window.localStorage.getItem("token")
             }}).then(response => {
