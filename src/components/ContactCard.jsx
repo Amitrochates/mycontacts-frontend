@@ -4,11 +4,13 @@ import axios from "axios";
 import { useEffect } from "react";
 import { toast } from 'react-toastify';
 export function ContactCard({id, onDelete, mode, setMode, setSelectedid, onSave}){
+
+    const url = import.meta.env.VITE_BACKEND_URL;
     const [contact, setContact] = useState([]);
     
   //  console.log("contact card id " + id)
     useEffect( () => { 
-        axios.get(`http://localhost:5001/api/contacts/${id}`, {
+        axios.get(`${url}/api/contacts/${id}`, {
         headers:{
             Authorization: "Bearer " + window.localStorage.getItem("token")
         }}
@@ -26,7 +28,7 @@ export function ContactCard({id, onDelete, mode, setMode, setSelectedid, onSave}
     }
 
   const handleDelete = () => { 
-    axios.delete(`http://localhost:5001/api/contacts/${id}`, {
+    axios.delete(`${url}/api/contacts/${id}`, {
     headers:{
         Authorization: "Bearer " + window.localStorage.getItem("token")
     }}
@@ -45,7 +47,7 @@ export function ContactCard({id, onDelete, mode, setMode, setSelectedid, onSave}
     }
     const handleSubmit = () => {
         if(mode === 'create'){
-            axios.post(`http://localhost:5001/api/contacts`, contact, {
+            axios.post(`${url}/api/contacts`, contact, {
                 headers: {
                     Authorization: "Bearer " + window.localStorage.getItem("token")
                 }
@@ -53,7 +55,7 @@ export function ContactCard({id, onDelete, mode, setMode, setSelectedid, onSave}
                 toast.success('Contact created');
             })
         } else if (mode === 'edit'){
-            axios.put(`http://localhost:5001/api/contacts/${id}`, contact, {
+            axios.put(`${url}/api/contacts/${id}`, contact, {
                 headers: {
                     Authorization: "Bearer " + window.localStorage.getItem("token")
                 }

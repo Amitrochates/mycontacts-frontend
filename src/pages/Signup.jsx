@@ -5,10 +5,10 @@ export const Signup = () => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
+    const url = import.meta.env.VITE_BACKEND_URL;
 
  function onClickHandler() { 
-        axios.post('http://localhost:5001/api/users/register', {
+        axios.post(`${url}/api/users/register`, {
         username,
         email,
         password
