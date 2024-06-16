@@ -11,7 +11,7 @@ export function TopBar (){
         </div> */}
        <div className="">
         
-            <Avatar/>
+            <Avatar name = "h"/>
        </div>
 
     </div>
