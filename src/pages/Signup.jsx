@@ -1,6 +1,7 @@
 import { TopBar } from "../components/TopBar"
 import { useState } from "react";
 import axios from 'axios';
+import { Link } from "react-router-dom";
 export const Signup = () => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
@@ -42,8 +43,9 @@ export const Signup = () => {
                     Sign up
                 </button>
 
-                <div className="text-gray-100 text-sm p-2 pt-6 font-xs">
+                <div className=" flex text-gray-100 text-sm p-2 pt-6 font-xs">
                     <div>Already have an account?</div>
+                    <Link className="pl-2 underline" to={"/signin"}>Login</Link>
                 </div>
             </div>
     </div>

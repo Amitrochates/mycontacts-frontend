@@ -1,7 +1,8 @@
 import { TopBar } from "../components/TopBar"
 import { useState } from "react"
 import axios from "axios"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
+
 export const Signin = () => {
     const url = import.meta.env.VITE_BACKEND_URL;
     const navigate = useNavigate();
@@ -40,8 +41,9 @@ export const Signin = () => {
                     Sign in
                 </button>
 
-                <div className="text-gray-100 text-sm p-2 pt-6 font-xs">
+                <div className="flex text-gray-100 text-sm p-2 pt-6 font-xs">
                     <div>Dont have an account? </div>
+                    <Link className="pl-2 underline" to={"/signup"}>Signup</Link>
                 </div>
             </div>
     </div>
