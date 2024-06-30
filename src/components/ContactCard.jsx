@@ -120,7 +120,7 @@ export function ContactCard({id, onDelete, mode, setMode, setSelectedid, onSave}
             
                 {/* <div>FORM FORM FORM </div> */}
             <form className="p-4 text-gray-300">
-               {mode === 'create' ? ('Create new User'):('Edit this user')}
+               {mode === 'create' ? ('Add a new Contact'):('Edit this user')}
             
             <div className="flex">
                 <div className="p-4 text-gray-100">
